@@ -1,0 +1,17 @@
+$space: 5rem;
+$container: 100rem;
+@mixin createSpace($property: margin) {
+  --min-space: 1rem;
+  --max-space: 10rem;
+  --pref-space: 5vw;
+  #{$property}-left: clamp(
+    var(--min-space),
+    var(--pref-space),
+    var(--max-space)
+  );
+  #{$property}-right: clamp(
+    var(--min-space),
+    var(--pref-space),
+    var(--max-space)
+  );
+}

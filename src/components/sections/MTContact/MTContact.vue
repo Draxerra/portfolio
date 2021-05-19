@@ -1,0 +1,128 @@
+<template>
+  <section class="mt-contact">
+    <validation-observer
+      class="mt-contact__container"
+      tag="div"
+      v-slot="{ invalid, validate }"
+    >
+      <h1>Interested? Let's talk.</h1>
+      <form class="mt-contact__form" @submit.prevent="onSubmit(validate)">
+        <div class="mt-contact__form__inputs">
+          <mt-input
+            class="input"
+            id="name"
+            label="Name"
+            v-model="form.name"
+            rules="required|min:2|max:30"
+          ></mt-input>
+          <mt-input
+            class="input"
+            id="company"
+            label="Company"
+            v-model="form.company"
+            rules="min:2|max:30"
+          ></mt-input>
+          <mt-input
+            class="input"
+            id="email"
+            label="Email"
+            v-model="form.email"
+            rules="required|email|min:2|max:50"
+          ></mt-input>
+          <mt-input
+            class="input"
+            tag="textarea"
+            id="message"
+            label="Message"
+            :rows="5"
+            v-model="form.message"
+            rules="required|min:10|max:1000"
+          ></mt-input>
+        </div>
+        <mt-button outline type="submit" :disabled="invalid">
+          Start a Conversation
+        </mt-button>
+      </form>
+    </validation-observer>
+  </section>
+</template>
+
+<script>
+import MTButton from "~/components/reused/MTButton";
+import MTInput from "~/components/reused/MTInput";
+
+import "./validation";
+import { ValidationObserver } from "vee-validate";
+
+export default {
+  components: {
+    "mt-button": MTButton,
+    "mt-input": MTInput,
+    "validation-observer": ValidationObserver,
+  },
+  data: () => ({
+    form: {
+      name: "",
+      company: "",
+      email: "",
+      message: "",
+    },
+  }),
+  methods: {
+    async onSubmit(validate) {
+      await validate();
+    },
+  },
+};
+</script>
+
+<style lang="scss" scoped>
+@use "src/styles/breakpoints" as breakpoints;
+@use "src/styles/spacing" as spacing;
+$gap: spacing.$space / 1.5;
+.mt-contact {
+  background: linear-gradient(
+    var(--primary-color),
+    var(--primary-color-darken)
+  );
+  padding: spacing.$space 0;
+  display: flex;
+  place-content: center;
+  &__container {
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    place-content: center;
+    flex: 1 1 spacing.$container;
+    max-width: spacing.$container;
+    gap: $gap;
+    @include spacing.createSpace();
+  }
+  &__form {
+    display: flex;
+    flex-direction: column;
+    place-items: center;
+    gap: $gap;
+    width: 100%;
+    &__inputs {
+      display: grid;
+      width: 100%;
+      grid-template-columns: repeat(2, 1fr);
+      gap: $gap;
+      .input {
+        grid-column: 1/3;
+        @include breakpoints.md {
+          &:first-child {
+            grid-row: 1/2;
+            grid-column: 1/2;
+          }
+          &:nth-child(2) {
+            grid-row: 1/2;
+            grid-column: 2/3;
+          }
+        }
+      }
+    }
+  }
+}
+</style>
