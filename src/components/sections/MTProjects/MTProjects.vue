@@ -14,8 +14,11 @@
           <mt-button outline @click="setModal('skills-portal')">
             Watch a Video
           </mt-button>
-          <mt-modal v-if="isModal('skills-portal')" @close="resetModal">
-            <source src="~/assets/Skills Portal.mp4" type="video/mp4" />
+          <mt-modal
+            v-if="isModal('skills-portal')"
+            @close="resetModal"
+            src="https://www.youtube-nocookie.com/embed/-VLqAKC0m1E"
+          >
           </mt-modal>
         </template>
         <template slot="image">
@@ -37,8 +40,11 @@
           <mt-button outline @click="setModal('discord-composer-bot')">
             Watch a Video
           </mt-button>
-          <mt-modal v-if="isModal('discord-composer-bot')" @close="resetModal">
-            <source src="~/assets/Discord Composer Bot.mp4" type="video/mp4" />
+          <mt-modal
+            v-if="isModal('discord-composer-bot')"
+            @close="resetModal"
+            src="https://www.youtube-nocookie.com/embed/lzuIUEVnuNE"
+          >
           </mt-modal>
         </template>
         <template slot="image">
@@ -60,8 +66,11 @@
           <mt-button outline @click="setModal('id3-tag-editor')">
             Watch a Video
           </mt-button>
-          <mt-modal v-if="isModal('id3-tag-editor')" @close="resetModal">
-            <source src="~/assets/ID3 Tag Editor.mp4" type="video/mp4" />
+          <mt-modal
+            v-if="isModal('id3-tag-editor')"
+            @close="resetModal"
+            src="https://www.youtube-nocookie.com/embed/chH431OWOMs"
+          >
           </mt-modal>
         </template>
         <template slot="image">

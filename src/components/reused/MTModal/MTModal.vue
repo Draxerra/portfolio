@@ -2,9 +2,14 @@
   <portal selector="#mt-modal">
     <div class="mt-modal__container">
       <div class="mt-modal" v-click-outside="close">
-        <video class="mt-modal__video" controls>
-          <slot />
-        </video>
+        <iframe
+          :src="src"
+          class="mt-modal__video"
+          title="YouTube video player"
+          frameborder="0"
+          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+          allowfullscreen
+        ></iframe>
         <mt-button class="mt-modal__close-button" icon @click="close">
           <svg
             xmlns="http://www.w3.org/2000/svg"
@@ -44,6 +49,12 @@ export default {
       this.$emit("close");
     },
   },
+  props: {
+    src: {
+      type: String,
+      required: true,
+    },
+  },
 };
 </script>
 
@@ -51,6 +62,7 @@ export default {
 @use "src/styles/spacing" as spacing;
 .mt-modal {
   width: min(90vw, 100em);
+  height: min(60vh, 70em);
   position: relative;
   &__container {
     position: fixed;
@@ -66,6 +78,7 @@ export default {
 
   &__video {
     width: 100%;
+    height: 100%;
   }
   &__close-button {
     position: absolute;
