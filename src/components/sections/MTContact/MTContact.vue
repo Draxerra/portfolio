@@ -8,13 +8,13 @@
       <h1>Interested? Let's talk.</h1>
       <form
         class="mt-contact__form"
-        name="Contact"
+        name="contact-form"
         method="POST"
         @submit.prevent="onSubmit(validate)"
         data-netlify="true"
         data-netlify-honeypot="bot-field"
       >
-        <input type="hidden" name="form-name" value="Contact" />
+        <input type="hidden" name="form-name" value="contact-form" />
         <div class="mt-contact__form__inputs">
           <mt-input
             class="input"
@@ -50,6 +50,8 @@
         <mt-button outline type="submit" :disabled="invalid">
           Start a Conversation
         </mt-button>
+        <span v-if="formStatus === 'success'">Received your submission.</span>
+        <span v-if="formStatus === 'error'">Something went wrong.</span>
       </form>
     </validation-observer>
   </section>
@@ -61,8 +63,6 @@ import MTInput from "~/components/reused/MTInput";
 
 import "./validation";
 import { ValidationObserver } from "vee-validate";
-
-import axios from "axios";
 
 export default {
   components: {
@@ -77,6 +77,7 @@ export default {
       email: "",
       message: "",
     },
+    formStatus: "",
   }),
   methods: {
     encode(data) {
@@ -86,21 +87,32 @@ export default {
         )
         .join("&");
     },
+    changeFormStatus(status) {
+      this.formStatus = status;
+      setTimeout(() => {
+        this.formStatus = "";
+      }, 5000);
+    },
     async onSubmit(validate) {
-      await validate();
-      const axiosConfig = {
-        header: {
-          "Content-Type": "application/x-www-form-urlencoded",
-        },
-      };
-      axios.post(
-        "/",
-        this.encode({
-          "form-name": "Contact",
-          ...this.form,
-        }),
-        axiosConfig
-      );
+      const valid = await validate();
+      if (!valid) return;
+
+      try {
+        const res = await fetch("/", {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/x-www-form-urlencoded",
+          },
+          body: this.encode({
+            "form-name": "contact-form",
+            ...this.form,
+          }),
+        });
+        if (!res.ok) throw Error(res.statusText);
+        this.changeFormStatus("success");
+      } catch (err) {
+        this.changeFormStatus("error");
+      }
     },
   },
 };

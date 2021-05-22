@@ -14,7 +14,7 @@
           'mt-input--error': errors[0],
         }"
         :id="id"
-        :name="label"
+        :name="id"
         placeholder=" "
         :is="tag"
         :rows="rows"
