@@ -77,8 +77,25 @@ export default {
     },
   }),
   methods: {
+    encode(data) {
+      return Object.keys(data)
+        .map(
+          (key) => `${encodeURIComponent(key)}=${encodeURIComponent(data[key])}`
+        )
+        .join("&");
+    },
     async onSubmit(validate) {
       await validate();
+      fetch("/", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/x-www-form-urlencoded",
+        },
+        body: this.encode({
+          "form-name": "Contact",
+          ...this.form,
+        }),
+      });
     },
   },
 };
