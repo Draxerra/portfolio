@@ -62,6 +62,8 @@ import MTInput from "~/components/reused/MTInput";
 import "./validation";
 import { ValidationObserver } from "vee-validate";
 
+import axios from "axios";
+
 export default {
   components: {
     "mt-button": MTButton,
@@ -86,16 +88,19 @@ export default {
     },
     async onSubmit(validate) {
       await validate();
-      fetch("/", {
-        method: "POST",
-        headers: {
+      const axiosConfig = {
+        header: {
           "Content-Type": "application/x-www-form-urlencoded",
         },
-        body: this.encode({
+      };
+      axios.post(
+        "/",
+        this.encode({
           "form-name": "Contact",
           ...this.form,
         }),
-      });
+        axiosConfig
+      );
     },
   },
 };
