@@ -1390,6 +1390,7 @@ __metadata:
   dependencies:
     "@linusborg/vue-simple-portal": ^0.1.5
     "@vue/component-compiler-utils": ^3.2.0
+    gsap: ^3.6.1
     parcel-bundler: ^1.12.5
     sass: ^1.32.12
     v-click-outside: ^3.1.2
@@ -3734,6 +3735,13 @@ fsevents@~2.3.1:
     brfs: ^1.2.0
     unicode-trie: ^0.3.1
   checksum: b151ec99bbf36da3edb3395da960f847acfc5ca0f999323222df4ea4030de38d8ceb3649cc8eff062a228701e0a214b330cf3eceed3607f30dbb7730493c69c3
+  languageName: node
+  linkType: hard
+
+"gsap@npm:^3.6.1":
+  version: 3.6.1
+  resolution: "gsap@npm:3.6.1"
+  checksum: 399667dee8050b89c4a8455f2a869106b3be7edaa70e225ea1443f87fd8efd86711f246552e9af5383c6286b73be59bd7c8192ef262e4c6ce71e59e99567e6b8
   languageName: node
   linkType: hard
 

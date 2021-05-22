@@ -6,7 +6,11 @@
       v-slot="{ invalid, validate }"
     >
       <h1>Interested? Let's talk.</h1>
-      <form class="mt-contact__form" @submit.prevent="onSubmit(validate)">
+      <form
+        class="mt-contact__form"
+        @submit.prevent="onSubmit(validate)"
+        netlify
+      >
         <div class="mt-contact__form__inputs">
           <mt-input
             class="input"

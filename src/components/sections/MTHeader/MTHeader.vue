@@ -1,7 +1,6 @@
 <template>
   <header class="mt-header">
     <mt-logo class="mt-header__logo"></mt-logo>
-    <mt-nav class="mt-header__nav"></mt-nav>
   </header>
 </template>
 

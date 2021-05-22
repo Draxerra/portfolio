@@ -30,6 +30,7 @@
 <script>
 import MTSkills from "./MTSkills";
 import skills from "./skills";
+
 export default {
   components: {
     "mt-skills": MTSkills,
