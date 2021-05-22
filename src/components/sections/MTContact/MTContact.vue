@@ -8,8 +8,10 @@
       <h1>Interested? Let's talk.</h1>
       <form
         class="mt-contact__form"
+        name="Contact"
+        method="POST"
         @submit.prevent="onSubmit(validate)"
-        netlify
+        data-netlify="true"
       >
         <div class="mt-contact__form__inputs">
           <mt-input
