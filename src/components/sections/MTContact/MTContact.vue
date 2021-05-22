@@ -12,7 +12,9 @@
         method="POST"
         @submit.prevent="onSubmit(validate)"
         data-netlify="true"
+        data-netlify-honeypot="bot-field"
       >
+        <input type="hidden" name="form-name" value="Contact" />
         <div class="mt-contact__form__inputs">
           <mt-input
             class="input"
