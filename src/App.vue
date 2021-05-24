@@ -139,7 +139,7 @@ strong {
     &__container {
       display: flex;
       flex-direction: column;
-      min-height: 100vh;
+      height: max(100vh, 50em);
     }
   }
   &__about {
