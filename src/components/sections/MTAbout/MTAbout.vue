@@ -14,11 +14,19 @@
         <img src="~/assets/Avatar.png" />
       </div>
       <div class="mt-about__skills">
-        <mt-skills class="skill" :skills="skills.designer" title="Designer">
+        <mt-skills
+          class="mt-about__skill"
+          :skills="skills.designer"
+          title="Designer"
+        >
           I like to design websites and graphics, and strongly value a good user
           experience.
         </mt-skills>
-        <mt-skills class="skill" :skills="skills.developer" title="Developer">
+        <mt-skills
+          class="mt-about__skill"
+          :skills="skills.developer"
+          title="Developer"
+        >
           I like to turn my designs into reality, with a preference for the MEVN
           and MERN stack.
         </mt-skills>
@@ -31,6 +39,8 @@
 import MTSkills from "./MTSkills";
 import skills from "./skills";
 
+import scrollTrigger from "~/utils/scrollTrigger";
+
 export default {
   components: {
     "mt-skills": MTSkills,
@@ -38,6 +48,15 @@ export default {
   data: () => ({
     skills,
   }),
+  mounted() {
+    scrollTrigger(".mt-about__info")
+      .from(".mt-about__info__text", { y: "-6em", opacity: 0 })
+      .from(".mt-about__info > img", { x: "6em", opacity: 0 });
+
+    scrollTrigger(".mt-about__skills")
+      .from(".mt-about__skill:first-child", { x: "-6em", opacity: 0 })
+      .from(".mt-about__skill:last-child", { x: "6em", opacity: 0 });
+  },
 };
 </script>
 
@@ -82,11 +101,11 @@ export default {
     @include breakpoints.md() {
       grid-template-columns: 1fr 1fr;
       gap: 0;
-      .skill:first-child {
+      .mt-about__skill:first-child {
         border-top-right-radius: 0;
         border-bottom-right-radius: 0;
       }
-      .skill:last-child {
+      .mt-about__skill:last-child {
         border-top-left-radius: 0;
         border-bottom-left-radius: 0;
       }

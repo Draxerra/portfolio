@@ -14,11 +14,23 @@
 </template>
 
 <script>
+import gsap from "gsap";
+
 export default {
   methods: {
     scroll() {
       this.$emit("scroll");
     },
+  },
+  mounted() {
+    gsap
+      .timeline()
+      .from(".mt-hero__header", { y: "-6em", opacity: 0 })
+      .from(".mt-hero__subheader", { x: "-6em", opacity: 0 })
+      .from(".mt-hero__scroll-btn", {
+        y: "6em",
+        opacity: 0,
+      });
   },
 };
 </script>

@@ -26,8 +26,6 @@ export default {
   place-content: space-between;
   padding: (spacing.$space / 2) 0;
 
-  position: sticky;
-  top: 0;
   background: var(--black-color);
   z-index: 1;
 

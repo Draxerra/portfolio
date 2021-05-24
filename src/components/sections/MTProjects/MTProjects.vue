@@ -86,6 +86,8 @@ import MTProject from "./MTProject";
 import MTButton from "~/components/reused/MTButton";
 import MTModal from "~/components/reused/MTModal";
 
+import scrollTrigger from "~/utils/scrollTrigger";
+
 export default {
   components: {
     "mt-project": MTProject,
@@ -105,6 +107,18 @@ export default {
     isModal(name) {
       return this.modal === name;
     },
+  },
+  mounted() {
+    scrollTrigger(".mt-projects")
+      .from(".mt-projects__container > *:first-child", {
+        x: "-6em",
+        opacity: 0,
+      })
+      .from(".mt-projects__container > *:nth-child(2)", {
+        x: "6em",
+        opacity: 0,
+      })
+      .from(".mt-projects__container > *:last-child", { y: "6em", opacity: 0 });
   },
 };
 </script>

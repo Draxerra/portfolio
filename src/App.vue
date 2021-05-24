@@ -1,7 +1,9 @@
 <template>
   <div class="mt-main">
-    <mt-header ref="header" class="mt-main__header"></mt-header>
-    <mt-hero @scroll="scrollTo" class="mt-main__hero"></mt-hero>
+    <div class="mt-main__hero__container">
+      <mt-header class="mt-main__header"></mt-header>
+      <mt-hero @scroll="scrollTo" class="mt-main__hero"></mt-hero>
+    </div>
     <mt-about class="mt-main__about"></mt-about>
     <mt-projects class="mt-main__projects"></mt-projects>
     <mt-contact class="mt-main__contact"></mt-contact>
@@ -18,6 +20,8 @@ import MTProjects from "~/components/sections/MTProjects";
 import MTContact from "~/components/sections/MTContact";
 import MTFooter from "~/components/sections/MTFooter";
 
+import gsap from "gsap";
+
 export default {
   components: {
     "mt-header": MTHeader,
@@ -29,11 +33,7 @@ export default {
   },
   methods: {
     scrollTo() {
-      const offset = -this.$refs.header.$el.offsetHeight;
-      this.$scrollTo(".mt-main__about", 1000, {
-        easing: "ease-in-out",
-        offset,
-      });
+      gsap.to(window, { duration: 1, scrollTo: ".mt-main__about" });
     },
   },
 };
@@ -127,15 +127,20 @@ strong {
 
 <style lang="scss" scoped>
 @use "src/styles/spacing" as spacing;
-$header-height: 15em;
 .mt-main {
   display: flex;
   flex-direction: column;
+  overflow: hidden;
   &__header {
-    height: $header-height;
+    height: clamp(12em, 20vh, 15em);
   }
   &__hero {
-    min-height: calc(100vh - #{$header-height});
+    flex: 1;
+    &__container {
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
   }
   &__about {
     padding-top: spacing.$space;

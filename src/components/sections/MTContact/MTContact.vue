@@ -17,28 +17,28 @@
         <input type="hidden" name="form-name" value="contact-form" />
         <div class="mt-contact__form__inputs">
           <mt-input
-            class="input"
+            class="input mt-contact__form__name"
             id="name"
             label="Name"
             v-model="form.name"
             rules="required|min:2|max:30"
           ></mt-input>
           <mt-input
-            class="input"
+            class="input mt-contact__form__company"
             id="company"
             label="Company"
             v-model="form.company"
             rules="min:2|max:30"
           ></mt-input>
           <mt-input
-            class="input"
+            class="input mt-contact__form__email"
             id="email"
             label="Email"
             v-model="form.email"
             rules="required|email|min:2|max:50"
           ></mt-input>
           <mt-input
-            class="input"
+            class="input mt-contact__form__message"
             tag="textarea"
             id="message"
             label="Message"
@@ -47,7 +47,12 @@
             rules="required|min:10|max:1000"
           ></mt-input>
         </div>
-        <mt-button outline type="submit" :disabled="invalid">
+        <mt-button
+          class="mt-contact__form__submit"
+          outline
+          type="submit"
+          :disabled="invalid"
+        >
           Start a Conversation
         </mt-button>
         <span v-if="formStatus === 'success'">Received your submission.</span>
@@ -63,6 +68,8 @@ import MTInput from "~/components/reused/MTInput";
 
 import "./validation";
 import { ValidationObserver } from "vee-validate";
+
+import scrollTrigger from "~/utils/scrollTrigger";
 
 export default {
   components: {
@@ -114,6 +121,17 @@ export default {
         this.changeFormStatus("error");
       }
     },
+  },
+  mounted() {
+    scrollTrigger(".mt-contact")
+      .from(".mt-contact__form__name", {
+        x: "-6em",
+        opacity: 0,
+      })
+      .from(".mt-contact__form__company", { x: "6em", opacity: 0 }, "-=0.5")
+      .from(".mt-contact__form__email", { x: "-6em", opacity: 0 }, "-=0.5")
+      .from(".mt-contact__form__message", { x: "6em", opacity: 0 }, "-=0.5")
+      .from(".mt-contact__form__submit", { y: "2em", opacity: 0 });
   },
 };
 </script>

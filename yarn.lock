@@ -1390,7 +1390,6 @@ __metadata:
   dependencies:
     "@linusborg/vue-simple-portal": ^0.1.5
     "@vue/component-compiler-utils": ^3.2.0
-    axios: ^0.21.1
     gsap: ^3.6.1
     parcel-bundler: ^1.12.5
     sass: ^1.32.12
@@ -1398,7 +1397,6 @@ __metadata:
     vee-validate: ^3.4.5
     vue: ^2.6.12
     vue-hot-reload-api: ^2.3.4
-    vue-scrollto: ^2.20.0
     vue-template-compiler: ^2.6.12
   languageName: unknown
   linkType: soft
@@ -1712,15 +1710,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^0.21.1":
-  version: 0.21.1
-  resolution: "axios@npm:0.21.1"
-  dependencies:
-    follow-redirects: ^1.10.0
-  checksum: 864fb7b5d077d236737f10adca53bf451a93f35a15271f56fba8da07265a02d26b7d881b935a6697dc6adb0549ea3e56d2eecb403edaa3bb78f6479901c10f69
-  languageName: node
-  linkType: hard
-
 "babel-plugin-dynamic-import-node@npm:^2.3.3":
   version: 2.3.3
   resolution: "babel-plugin-dynamic-import-node@npm:2.3.3"
@@ -1834,13 +1823,6 @@ __metadata:
   dependencies:
     tweetnacl: ^0.14.3
   checksum: 3f57eb99bbc02352f68ff31e446997f4d21cc9a5e5286449dc1fe0116ec5dac5a4aa538967d45714fa9320312d2be8d16126f2d357da1dd40a3d546b96e097ed
-  languageName: node
-  linkType: hard
-
-"bezier-easing@npm:2.1.0":
-  version: 2.1.0
-  resolution: "bezier-easing@npm:2.1.0"
-  checksum: 6ee6bc647109e1dc86533eef31c673652cc97188590ff8ee2a4c0596d275d9e54383a3ea7c2b51500e9b2263718e252f296dbce050df3df888025eca4b453be8
   languageName: node
   linkType: hard
 
@@ -3515,16 +3497,6 @@ __metadata:
   dependencies:
     to-regex-range: ^5.0.1
   checksum: efca43d59b487ad4bc0b2b1cb9e51617c75a7b0159db51fa190c75c3d634ea5fad1ff4750d7c14346add4cd065e3c46e8f99af333edf2b4ec2a424f87e491a85
-  languageName: node
-  linkType: hard
-
-"follow-redirects@npm:^1.10.0":
-  version: 1.14.1
-  resolution: "follow-redirects@npm:1.14.1"
-  peerDependenciesMeta:
-    debug:
-      optional: true
-  checksum: 761a18699688b19d66b3e9199ecaf9cd39ede953f3529299c7fca4190b27b855c17c491170977844d5db5e169ffc35ebae999bb0833e9c9c61988d19c20ae7ab
   languageName: node
   linkType: hard
 
@@ -7785,15 +7757,6 @@ fsevents@~2.3.1:
   version: 2.3.4
   resolution: "vue-hot-reload-api@npm:2.3.4"
   checksum: dedefb87284bdba222a93bc55bc1441ee16d9e30546d57107c42d21102cfcafba058c8be35f2678370cee0588f1bf3ee7b32dbf3c1610e5c9bf851a5996a8351
-  languageName: node
-  linkType: hard
-
-"vue-scrollto@npm:^2.20.0":
-  version: 2.20.0
-  resolution: "vue-scrollto@npm:2.20.0"
-  dependencies:
-    bezier-easing: 2.1.0
-  checksum: bfd6df28a114155431ef57028ae9fa6242c47563ff624cbf477819c09590ffc4dacad3ec5520d9a646c64e5f82fdc738b71d388cb649ec2e4f8d0a9366398b52
   languageName: node
   linkType: hard
 
