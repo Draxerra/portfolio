@@ -15,7 +15,7 @@
             Watch a Video
           </mt-button>
           <mt-modal
-            v-if="isModal('skills-portal')"
+            :open="isModal('skills-portal')"
             @close="resetModal"
             src="https://www.youtube-nocookie.com/embed/-VLqAKC0m1E"
           >
@@ -41,7 +41,7 @@
             Watch a Video
           </mt-button>
           <mt-modal
-            v-if="isModal('discord-composer-bot')"
+            :open="isModal('discord-composer-bot')"
             @close="resetModal"
             src="https://www.youtube-nocookie.com/embed/lzuIUEVnuNE"
           >
@@ -67,7 +67,7 @@
             Watch a Video
           </mt-button>
           <mt-modal
-            v-if="isModal('id3-tag-editor')"
+            :open="isModal('id3-tag-editor')"
             @close="resetModal"
             src="https://www.youtube-nocookie.com/embed/chH431OWOMs"
           >

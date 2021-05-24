@@ -1,34 +1,36 @@
 <template>
   <portal selector="#mt-modal">
-    <div class="mt-modal__container">
-      <div class="mt-modal" v-click-outside="close">
-        <iframe
-          :src="src"
-          class="mt-modal__video"
-          title="YouTube video player"
-          frameborder="0"
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowfullscreen
-        ></iframe>
-        <mt-button class="mt-modal__close-button" icon @click="close">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            width="15"
-            height="15"
-            viewBox="0 0 30 30"
-            class="close"
-          >
-            <path
-              id="Icon_material-close"
-              data-name="Icon material-close"
-              d="M37.5,10.521,34.479,7.5,22.5,19.479,10.521,7.5,7.5,10.521,19.479,22.5,7.5,34.479,10.521,37.5,22.5,25.521,34.479,37.5,37.5,34.479,25.521,22.5Z"
-              transform="translate(-7.5 -7.5)"
-              fill="#f5f5f5"
-            />
-          </svg>
-        </mt-button>
+    <transition name="fade">
+      <div class="mt-modal__container" v-if="open">
+        <div class="mt-modal" v-click-outside="close">
+          <iframe
+            :src="src"
+            class="mt-modal__video"
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
+          <mt-button class="mt-modal__close-button" icon @click="close">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="15"
+              height="15"
+              viewBox="0 0 30 30"
+              class="close"
+            >
+              <path
+                id="Icon_material-close"
+                data-name="Icon material-close"
+                d="M37.5,10.521,34.479,7.5,22.5,19.479,10.521,7.5,7.5,10.521,19.479,22.5,7.5,34.479,10.521,37.5,22.5,25.521,34.479,37.5,37.5,34.479,25.521,22.5Z"
+                transform="translate(-7.5 -7.5)"
+                fill="#f5f5f5"
+              />
+            </svg>
+          </mt-button>
+        </div>
       </div>
-    </div>
+    </transition>
   </portal>
 </template>
 
@@ -50,6 +52,10 @@ export default {
     },
   },
   props: {
+    open: {
+      type: Boolean,
+      default: false,
+    },
     src: {
       type: String,
       required: true,
@@ -62,7 +68,10 @@ export default {
 @use "src/styles/spacing" as spacing;
 .mt-modal {
   width: min(90vw, 100em);
-  height: min(60vh, 70em);
+  aspect-ratio: 16 / 9;
+  @supports not (aspect-ratio: 16 / 9) {
+    height: min(60vh, 70em);
+  }
   position: relative;
   &__container {
     position: fixed;
@@ -74,6 +83,16 @@ export default {
     display: flex;
     place-items: center;
     place-content: center;
+
+    &.fade-enter-active,
+    &.fade-leave-active {
+      transition: opacity 0.5s ease-in-out;
+    }
+
+    &.fade-enter,
+    &.fade-leave-to {
+      opacity: 0;
+    }
   }
 
   &__video {
